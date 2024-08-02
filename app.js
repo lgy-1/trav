@@ -2,13 +2,44 @@ const express = require('express');
 const mysql = require('mysql2');
 const multer = require('multer');
 const app = express();
-// Create MySQL connection
+
+
+// Create a connection to the database
 const connection = mysql.createConnection({
-    host: 'freedb.tech',
-    user: 'freedb_lgy12',
-    password: 's?wfzz9P4nuRJpF',
-    database: 'freedb_travelapp'
+  host: 'sql.freedb.tech',
+  user: 'freedb_lgy12',
+  password: 's?wfzz9P4nuRJpF',
+  database: 'freedb_travelapp',
+  port: 3306
 });
+
+// Connect to the database
+connection.connect(err => {
+  if (err) {
+    console.error('Error connecting to the database:', err.stack);
+    return;
+  }
+  console.log('Connected to the database as ID', connection.threadId);
+
+  // Perform your query here
+  connection.query('SELECT * FROM your_table', (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error.stack);
+    } else {
+      console.log('Query results:', results);
+    }
+
+    // Close the connection after the query is complete
+    connection.end(err => {
+      if (err) {
+        console.error('Error ending the connection:', err.stack);
+        return;
+      }
+      console.log('Connection closed.');
+    });
+  });
+});
+
 
 const storage = multer.diskStorage({
     destination: (req,file,cb) =>{
