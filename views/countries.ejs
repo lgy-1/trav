@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Cards</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 15px;
+            background-color: #f5f5dc;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            object-fit: cover;
+            height: 200px;
+        }
+
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+
+        .btn-primary {
+            background-color: teal;
+            border-color: teal;
+            transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: darkcyan;
+            border-color: darkcyan;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body style="background-color: #f2f2f2;">
+    <%- include ('partials/navbar.ejs') %>
+    <div class="container">
+        <h1>Countries</h1>
+        <div class="row">
+            <% for(let i = 0; i < country.length; i++) { %>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="images/<%= country[i].image %>" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title"><%= country[i].Name %></h4>
+                        <p class="card-text"><%= country[i].description %></p>
+                        <a href="/country/<%= country[i].countryId %>" class="btn btn-primary">Go to <%= country[i].Name %></a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>
