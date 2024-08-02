@@ -4,10 +4,10 @@ const multer = require('multer');
 const app = express();
 // Create MySQL connection
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'travel'
+    host: 'db4.com',
+    user: 'lgy1234',
+    password: 'Lim12345',
+    database: 'trav'
 });
 
 const storage = multer.diskStorage({
