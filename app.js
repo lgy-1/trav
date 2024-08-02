@@ -4,7 +4,7 @@ const multer = require('multer');
 const app = express();
 // Create MySQL connection
 const connection = mysql.createConnection({
-    host: 'sql.freedb.tech',
+    host: 'freedb.tech',
     user: 'freedb_lgy12',
     password: 's?wfzz9P4nuRJpF',
     database: 'freedb_travelapp'
